@@ -1,6 +1,9 @@
 # YouTube Mini Player #
 This repo was made for a school assignment relating to databases and php
 
+## Showcase
+[link](https://www.youtube.com/watch?v=JbY5PaQhOc4)
+
 ## Installation
 - Set up a web server (Apache, Nginx, etc.)
     - Install PHP
