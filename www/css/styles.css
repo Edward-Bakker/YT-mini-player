@@ -55,6 +55,7 @@ body > main > nav {
     display: flex;
     flex-flow: column nowrap;
     background-color: #EEEEEE;
+    min-width: 100px;
     width: 15%;
 }
 
