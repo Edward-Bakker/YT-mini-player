@@ -31,7 +31,7 @@
                     $element = video::getSingleEntry($key);
                     $autoplay = config::getYtConfig()->autoplay;
                     if($element === false) {
-                        header("Refresh: 0; url=index.php", true, 303);
+                        header("location: index.php", true, 303);
                     }
                 ?>
                 <iframe src="https://www.youtube-nocookie.com/embed/<?php echo $element[2]?>?autoplay=<?php echo $autoplay?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
