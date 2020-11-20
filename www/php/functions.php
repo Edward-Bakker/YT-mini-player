@@ -8,6 +8,13 @@
     */
 
     class config {
+        public static function getYtConfig() {
+            $ini = (object) parse_ini_file('../config.ini', true);
+            $config = $ini->youtube;
+
+            return (object) $config;
+        }
+
         public static function getDBConfig() {
             $ini = (object) parse_ini_file('../config.ini', true);
             $config = $ini->database;

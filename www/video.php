@@ -29,11 +29,12 @@
             <div id="div-content-video">
                 <?php
                     $element = video::getSingleEntry($key);
+                    $autoplay = config::getYtConfig()->autoplay;
                     if($element === false) {
                         header("Refresh: 0; url=index.php", true, 303);
                     }
                 ?>
-                <iframe src="https://www.youtube-nocookie.com/embed/<?php echo $element[2]?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube-nocookie.com/embed/<?php echo $element[2]?>?autoplay=<?php echo $autoplay?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <h2><?php echo $element[0]?></h2>
                 <p><?php echo $element[1]?></p>
             </div>
