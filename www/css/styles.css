@@ -1,0 +1,157 @@
+/*
+    File: styles.php
+    Author: Sam Klop - https://github.com/samklop
+
+    Description:
+    The styling file of the yt mini player assignment
+*/
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+body {
+    background-color: #f6f6f6;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+iframe {
+    height: 80%;
+    width: 100%;
+    overflow: auto;
+}
+
+body > header {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    background-color:#039CF4;
+}
+
+body > header > h1 {
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5rem;
+    padding: 10px;
+}
+
+body > header > h1 > a {
+    color: white;
+}
+
+body > main {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+body > main > nav {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #EEEEEE;
+    width: 15%;
+}
+
+body > main > nav > a {
+    padding: 5%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+body > main > nav > a:hover {
+    background-color:#039CF4;
+    color: white;
+}
+
+.div-video {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #EEEEEE;
+    min-height: 100px;
+    min-width: 200px;
+    max-width: 350px;
+    margin: 1%;
+    padding: 0.5%;
+    box-shadow: 2px 2px 10px #888888;
+}
+
+.div-video > a > span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+}
+
+.div-video > h2,
+.div-video > p {
+    max-width: 320px;
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.div-video-image {
+    margin: 0 auto;
+}
+
+#div-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+}
+
+#div-content-admin,
+#div-content-video {
+    margin: 1%;
+}
+
+#div-content-video {
+    width: 600px;
+    height: 400px;
+}
+
+#div-content-admin > form {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#div-content-admin > h2 {
+    margin-bottom: 10px;
+}
+
+#div-content-admin > form > label {
+    margin-bottom: 2.5px;
+}
+
+#div-content-admin > form > input,
+#div-content-admin > form > input:focus {
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 1px solid #888888;
+    border-radius: 1px;
+}
+
+#div-content-admin > form > input[type=submit] {
+    background-color: #039CF4;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#div-content-handleAdmin {
+    margin: 1%;
+}
