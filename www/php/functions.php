@@ -81,23 +81,53 @@
         }
     }
 
+    class youtube {
+        public static function checkIfVideoExists ($id) {
+            $url = "https://www.youtube.com/watch?v=" . $id;
+            $file = file_get_contents($url);
+
+            if (!$file) {
+                return false;
+            }
+
+            $result = preg_match('/<title>(.*?)<\/title>/', $file, $matches);
+
+            if (!$result) {
+                return false;
+            }
+
+            $title = preg_replace('/\s+/', ' ', $matches[0]);
+            $title = trim($title);
+
+            if ($title === "YouTube") {
+                return false;
+            }
+
+            return true;
+        }
+    }
+
     class form {
         public static function handleAdminInput($title, $artist, $id) {
-            $config = config::getDBConfig();
-            $mysqli = new mysqli($config->db_host, $config->db_user, $config->db_pass, $config->db_name);
+            if(youtube::checkIfVideoExists($id)) {
+                $config = config::getDBConfig();
 
-            if(!mysqli_connect_errno()) {
-                if($stmt = $mysqli->prepare("INSERT INTO videos (song_title, artist_name, playback_id) VALUES (?, ?, ?)")) {
-                    $stmt->bind_param("sss", $title, $artist, $id);
+                $mysqli = new mysqli($config->db_host, $config->db_user, $config->db_pass, $config->db_name);
 
-                    $stmt->execute();
+                if(!mysqli_connect_errno()) {
+                    if($stmt = $mysqli->prepare("INSERT INTO videos (song_title, artist_name, playback_id) VALUES (?, ?, ?)")) {
+                        $stmt->bind_param("sss", $title, $artist, $id);
 
-                    $stmt->close();
+                        $stmt->execute();
+
+                        $stmt->close();
+                    }
+                    $mysqli->close();
+                    return true;
                 }
-                $mysqli->close();
-                return true;
+                echo "Connect failed" . mysqli_connect_error();
+                return false;
             }
-            echo "Connect failed" . mysqli_connect_error();
             return false;
         }
     }
