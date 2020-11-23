@@ -86,24 +86,19 @@
             $url = "https://www.youtube.com/watch?v=" . $id;
             $file = file_get_contents($url);
 
-            if (!$file) {
+            if (!$file)
                 return false;
-            }
 
             $result = preg_match('/<title>(.*?)<\/title>/', $file, $matches);
 
-            if (!$result) {
+            if (!$result)
                 return false;
-            }
 
             $title = preg_replace('/\s+/', ' ', $matches[0]);
             $title = trim($title);
 
-            if ($title === "YouTube") {
-                return false;
-            }
-
-            return true;
+            if ($title !== "YouTube")
+                return true;
         }
     }
 
