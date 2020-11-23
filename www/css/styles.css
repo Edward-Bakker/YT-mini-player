@@ -31,19 +31,30 @@ iframe {
 body > header {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
     width: 100%;
-    background-color:#039CF4;
+    background-color: #039CF4;
 }
 
 body > header > h1 {
-    justify-self: center;
-    align-self: center;
     font-size: 1.5rem;
     padding: 10px;
 }
 
 body > header > h1 > a {
     color: white;
+}
+
+body > header > form {
+    align-self: center;
+    margin-right: 10px;
+}
+
+body > header > form > input,
+body > header > form > input:focus {
+    padding: 5px;
+    border: 1px solid #888888;
+    border-radius: 1px;
 }
 
 body > main {
@@ -152,11 +163,17 @@ body > main > nav > a:hover {
 }
 
 #div-content-admin > form > input[type=submit],
-#div-content-settings > form > input[type=submit] {
+#div-content-settings > form > input[type=submit],
+body> header > form > input[type=submit] {
     background-color: #039CF4;
     border: none;
     color: white;
     cursor: pointer;
+}
+
+body > header > form > input[type=submit] {
+    background-color: #f6f6f6;
+    color: #333333;
 }
 
 #div-content-handleAdmin {

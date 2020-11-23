@@ -24,6 +24,10 @@
     <body>
         <header>
             <h1><a id="header-left" href="index.php">YouTube Mini Player</a></h1>
+            <form action="index.php" method="post">
+                <input class="inputbox" type="text" name="searchInput" placeholder="Searchterm">
+                <input type="submit" name="submit" value="Search">
+            </form>
         </header>
         <main>
             <nav>
@@ -33,7 +37,16 @@
             </nav>
             <div id="div-content">
                 <?php
-                    $entries = video::getAllEntries();
+                    if(isset($_POST['submit'])) {
+                        $searchTerm = filter_input(INPUT_POST, 'searchInput', FILTER_SANITIZE_STRING);
+                        if(!empty($searchTerm)) {
+                            $entries = video::searchEntries($searchTerm);
+                        } else {
+                            $entries = video::getAllEntries();
+                        }
+                    } else {
+                        $entries = video::getAllEntries();
+                    }
                     foreach($entries as $element): ?>
                         <div class="div-video">
                             <a href="video.php?id=<?php echo $element[0]; ?>"><span></span></a>

@@ -86,6 +86,36 @@
             }
             echo "Connect failed" . mysqli_connect_error();
         }
+
+        public static function searchEntries($term) {
+            $config = config::getDBConfig();
+            $mysqli = new mysqli($config->db_host, $config->db_user, $config->db_pass, $config->db_name);
+            $searchTerm = "%" . $term . "%";
+
+            if(!mysqli_connect_errno()) {
+                if($stmt = $mysqli->prepare("SELECT id, song_title, artist_name, playback_id FROM videos WHERE song_title LIKE ? OR artist_name LIKE ?")) {
+                    $stmt->bind_param("ss", $searchTerm, $searchTerm);
+
+                    $stmt->execute();
+
+                    $stmt->bind_result($id, $title, $name, $playback_id);
+
+                    $stmt->store_result();
+
+
+                    $resultArray = [];
+                    if($stmt->num_rows != 0) {
+                        while($stmt->fetch()) {
+                            array_push($resultArray, [$id, $title, $name, $playback_id]);
+                        }
+                    }
+                    $stmt->close();
+                }
+                $mysqli->close();
+                return $resultArray;
+            }
+            echo "Connect failed" . mysqli_connect_error();
+        }
     }
 
     class youtube {
