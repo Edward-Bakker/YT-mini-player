@@ -9,7 +9,7 @@
 -->
 <html lang="en">
     <head>
-    <title>YT Mini Player - Overview</title>
+        <title>YT Mini Player - Overview</title>
         <link href="css/styles.css" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
