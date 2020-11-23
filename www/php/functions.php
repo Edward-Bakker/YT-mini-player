@@ -7,6 +7,13 @@
         This file contains all the functions used within this project.
     */
 
+    class general {
+        public static function start() {
+            if(!cookies::isDarkthemeSet())
+                cookies::setLightthemeSetting();
+        }
+    }
+
     class config {
         public static function getYtConfig() {
             $ini = (object) parse_ini_file('../config.ini', true);
@@ -124,6 +131,29 @@
                 return false;
             }
             return false;
+        }
+    }
+
+    class cookies {
+        public static function isDarkthemeSet() {
+            if (isset($_COOKIE['darktheme']))
+                return true;
+
+            return false;
+        }
+        public static function getDarkthemeSetting() {
+            if(isset($_COOKIE['darktheme']) && $_COOKIE['darktheme'] === "1")
+                return true;
+
+            return false;
+        }
+
+        public static function setLightthemeSetting() {
+            setcookie("darktheme", "0", time() + 86400, "/");
+        }
+
+        public static function setDarkThemeSetting() {
+            setcookie("darktheme", "1", time() + 86400, "/");
         }
     }
 ?>

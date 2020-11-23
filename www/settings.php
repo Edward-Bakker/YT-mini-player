@@ -4,11 +4,11 @@
 ?>
 <!doctype html>
 <!--
-    File: admin.php
+    File: settings.php
     Author: Sam Klop - https://github.com/samklop
 
     Description:
-    The admin page of the yt mini player assignment, allows you to add new videos
+    The settings page of the yt mini player assignment, allows you to change your settings
 -->
 <html lang="en">
     <head>
@@ -31,17 +31,22 @@
                 <a href="admin.php">Admin</a>
                 <a href="settings.php">Settings</a>
             </nav>
-            <div id="div-content-admin">
-                <h2>Admin Page</h2>
-                <form action="handleAdmin.php" method="post">
-                    <label for="titleInput">Title</label>
-                    <input class="inputbox" id="titleInput" type="text" name="titleInput" placeholder="Title" required>
-
-                    <label for="artistInput">Artist</label>
-                    <input class="inputbox" id="artistInput" type="text" name="artistInput" placeholder="Artist" required>
-
-                    <label for="idInput">ID</label>
-                    <input class="inputbox" id="idInput" type="text" name="idInput" placeholder="ID" required>
+            <div id="div-content-settings">
+                <?php
+                    if(isset($_POST['submit'])) {
+                        $darktheme = filter_input(INPUT_POST, 'darkthemeInput', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+                        if(isset($darktheme) && $darktheme[0] === "1") {
+                            cookies::setDarkThemeSetting();
+                        } else {
+                            cookies::setLightthemeSetting();
+                        }
+                        header("location: settings.php", true, 303);
+                    }
+                ?>
+                <h2>Settings</h2>
+                <form action="settings.php" method="post">
+                    <input class="checkbox" id="darkthemeInput" type="checkbox" name="darkthemeInput[]" value="1" <?php echo (cookies::getDarkthemeSetting()) ? 'checked' : ''?> >
+                    <label for="darkthemeInput">Darktheme</label><br>
 
                     <input type="submit" name="submit" value="Submit">
                 </form>

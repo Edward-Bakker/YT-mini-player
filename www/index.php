@@ -1,4 +1,7 @@
-<?php include 'php/functions.php'; ?>
+<?php
+    include 'php/functions.php';
+    general::start();
+?>
 <!doctype html>
 <!--
     File: index.php
@@ -10,7 +13,11 @@
 <html lang="en">
     <head>
         <title>YT Mini Player - Overview</title>
-        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <?php if(cookies::getDarkthemeSetting()): ?>
+            <link href="css/darkStyles.css" rel="stylesheet" type="text/css">
+        <?php else: ?>
+            <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <?php endif; ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -22,6 +29,7 @@
             <nav>
                 <a href="index.php">Overview</a>
                 <a href="admin.php">Admin</a>
+                <a href="settings.php">Settings</a>
             </nav>
             <div id="div-content">
                 <?php

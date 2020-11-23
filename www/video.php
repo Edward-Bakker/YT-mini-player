@@ -1,5 +1,6 @@
 <?php
     include 'php/functions.php';
+    general::start();
     $key = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
  ?>
 <!doctype html>
@@ -13,7 +14,11 @@
 <html lang="en">
     <head>
         <title>YT Mini Player - Video <?php echo $key ?></title>
-        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <?php if(cookies::getDarkthemeSetting()): ?>
+            <link href="css/darkStyles.css" rel="stylesheet" type="text/css">
+        <?php else: ?>
+            <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <?php endif; ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -25,6 +30,7 @@
             <nav>
                 <a href="index.php">Overview</a>
                 <a href="admin.php">Admin</a>
+                <a href="settings.php">Settings</a>
             </nav>
             <div id="div-content-video">
                 <?php
