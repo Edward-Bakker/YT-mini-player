@@ -13,7 +13,7 @@
 <html lang="en">
     <head>
         <title>YT Mini Player - Video <?php echo $key ?></title>
-        <link rel='stylesheet' href='css/styles.css' type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
