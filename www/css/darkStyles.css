@@ -128,6 +128,11 @@ body > main > nav > a:hover {
     height: 400px;
 }
 
+#div-content-video > h2,
+#div-content-video > p {
+    color: #ffffff;
+}
+
 #div-content-admin > form {
     display: flex;
     flex-flow: column nowrap;
@@ -165,4 +170,8 @@ body > main > nav > a:hover {
 
 #div-content-handleAdmin {
     margin: 1%;
+}
+
+#div-content-handleAdmin > h2 {
+    color: #ffffff;
 }
