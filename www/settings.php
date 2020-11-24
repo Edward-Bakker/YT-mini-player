@@ -12,7 +12,7 @@
 -->
 <html lang="en">
     <head>
-        <title>YT Mini Player - Admin</title>
+        <title>YT Mini Player - Settings</title>
         <?php if(cookies::getDarkthemeSetting()): ?>
             <link href="css/darkStyles.css" rel="stylesheet" type="text/css">
         <?php else: ?>
