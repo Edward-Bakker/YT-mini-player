@@ -9,8 +9,10 @@
 
     class general {
         public static function start() {
-            if(!cookies::isDarkthemeSet())
+            if(!cookies::isDarkthemeSet() || !cookies::getDarkthemeSetting())
                 cookies::setLightthemeSetting();
+            else
+                cookies::setDarkThemeSetting();
         }
     }
 
@@ -101,7 +103,6 @@
                     $stmt->bind_result($id, $title, $name, $playback_id);
 
                     $stmt->store_result();
-
 
                     $resultArray = [];
                     if($stmt->num_rows != 0) {
