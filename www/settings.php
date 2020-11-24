@@ -48,7 +48,7 @@
                     <input class="checkbox" id="darkthemeInput" type="checkbox" name="darkthemeInput[]" value="1" <?php echo (cookies::getDarkthemeSetting()) ? 'checked' : ''?> >
                     <label for="darkthemeInput">Darktheme</label><br>
 
-                    <input type="submit" name="submit" value="Submit">
+                    <input type="submit" name="submit" value="Save">
                 </form>
             </div>
         </main>
