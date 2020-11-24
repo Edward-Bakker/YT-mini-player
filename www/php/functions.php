@@ -9,21 +9,14 @@
 
     class general {
         public static function start() {
-            if(!cookies::isDarkthemeSet() || !cookies::getDarkthemeSetting())
-                cookies::setLightthemeSetting();
+            if(!cookies::isSettingSet('darktheme') || !cookies::getSettingBool('darktheme'))
+                cookies::setSetting('darktheme', '0');
             else
-                cookies::setDarkThemeSetting();
+                cookies::setSetting('darktheme', '1');
         }
     }
 
     class config {
-        public static function getYtConfig() {
-            $ini = (object) parse_ini_file('../config.ini', true);
-            $config = $ini->youtube;
-
-            return (object) $config;
-        }
-
         public static function getDBConfig() {
             $ini = (object) parse_ini_file('../config.ini', true);
             $config = $ini->database;
@@ -166,25 +159,22 @@
     }
 
     class cookies {
-        public static function isDarkthemeSet() {
-            if (isset($_COOKIE['darktheme']))
-                return true;
-
-            return false;
-        }
-        public static function getDarkthemeSetting() {
-            if(isset($_COOKIE['darktheme']) && $_COOKIE['darktheme'] === "1")
+        public static function isSettingSet($setting) {
+            if (isset($_COOKIE[$setting]))
                 return true;
 
             return false;
         }
 
-        public static function setLightthemeSetting() {
-            setcookie("darktheme", "0", time() + 86400, "/");
+        public static function getSettingBool($setting) {
+            if(isset($_COOKIE[$setting]) && $_COOKIE[$setting] === "1")
+                return true;
+
+            return false;
         }
 
-        public static function setDarkThemeSetting() {
-            setcookie("darktheme", "1", time() + 86400, "/");
+        public static function setSetting($setting, $value) {
+            setcookie($setting, $value, time() + 86400, "/");
         }
     }
 ?>

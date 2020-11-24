@@ -13,7 +13,7 @@
 <html lang="en">
     <head>
         <title>YT Mini Player - Settings</title>
-        <?php if(cookies::getDarkthemeSetting()): ?>
+        <?php if(cookies::getSettingBool('darktheme')): ?>
             <link href="css/darkStyles.css" rel="stylesheet" type="text/css">
         <?php else: ?>
             <link href="css/styles.css" rel="stylesheet" type="text/css">
@@ -34,19 +34,28 @@
             <div id="div-content-settings">
                 <?php
                     if(isset($_POST['submit'])) {
-                        $darktheme = filter_input(INPUT_POST, 'darkthemeInput', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
-                        if(isset($darktheme) && $darktheme[0] === "1") {
-                            cookies::setDarkThemeSetting();
-                        } else {
-                            cookies::setLightthemeSetting();
-                        }
+                        $darktheme = filter_input(INPUT_POST, 'darkthemeInput', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY);
+                        $autoplay = filter_input(INPUT_POST, 'autoplayInput', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY);
+                        if(isset($darktheme) && $darktheme[0] === "1")
+                            cookies::setSetting('darktheme', '1');
+                        else
+                            cookies::setSetting('darktheme', '0');
+
+                        if(isset($autoplay) && $autoplay[0] === "1")
+                            cookies::setSetting('autoplay', '1');
+                        else
+                            cookies::setSetting('autoplay', '0');
+
                         header("location: settings.php", true, 303);
                     }
                 ?>
                 <h2>Settings</h2>
                 <form action="settings.php" method="post">
-                    <input class="checkbox" id="darkthemeInput" type="checkbox" name="darkthemeInput[]" value="1" <?php echo (cookies::getDarkthemeSetting()) ? 'checked' : ''?> >
+                    <input class="checkbox" id="darkthemeInput" type="checkbox" name="darkthemeInput[]" value="1" <?php echo (cookies::getSettingBool('darktheme')) ? 'checked' : ''?> >
                     <label for="darkthemeInput">Darktheme</label><br>
+
+                    <input class="checkbox" id="autoplayInput" type="checkbox" name="autoplayInput[]" value="1" <?php echo (cookies::getSettingBool('autoplay')) ? 'checked' : ''?> >
+                    <label for="autoplayInput">Autoplay</label><br>
 
                     <input type="submit" name="submit" value="Save">
                 </form>

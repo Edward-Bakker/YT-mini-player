@@ -13,7 +13,7 @@
 <html lang="en">
     <head>
         <title>YT Mini Player - Overview</title>
-        <?php if(cookies::getDarkthemeSetting()): ?>
+        <?php if(cookies::getSettingBool('darktheme')): ?>
             <link href="css/darkStyles.css" rel="stylesheet" type="text/css">
         <?php else: ?>
             <link href="css/styles.css" rel="stylesheet" type="text/css">

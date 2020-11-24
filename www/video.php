@@ -14,7 +14,7 @@
 <html lang="en">
     <head>
         <title>YT Mini Player - Video <?php echo $key ?></title>
-        <?php if(cookies::getDarkthemeSetting()): ?>
+        <?php if(cookies::getSettingBool('darktheme')): ?>
             <link href="css/darkStyles.css" rel="stylesheet" type="text/css">
         <?php else: ?>
             <link href="css/styles.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
             <div id="div-content-video">
                 <?php
                     $element = video::getSingleEntry($key);
-                    $autoplay = config::getYtConfig()->autoplay;
+                    $autoplay = cookies::getSettingBool('autoplay');
                     if($element === false) {
                         header("location: index.php", true, 303);
                     }
