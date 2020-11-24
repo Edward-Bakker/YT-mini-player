@@ -86,14 +86,13 @@ body > main > nav > a:hover {
     position: relative;
     display: flex;
     flex-flow: column wrap;
-    background-color: #EEEEEE;
+    background-color: #232931;
     min-height: 100px;
     min-width: 200px;
     max-width: 350px;
     margin: 1%;
     padding: 0.5%;
     box-shadow: 2px 2px 10px #111111;
-    background-color: #232931;
     color: #ffffff;
 }
 

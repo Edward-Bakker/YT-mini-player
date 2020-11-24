@@ -13,6 +13,11 @@
                 cookies::setSetting('darktheme', '0');
             else
                 cookies::setSetting('darktheme', '1');
+
+            if(!cookies::isSettingSet('autoplay') || !cookies::getSettingBool('autoplay'))
+                cookies::setSetting('autoplay', '0');
+            else
+                cookies::setSetting('autoplay', '1');
         }
     }
 
