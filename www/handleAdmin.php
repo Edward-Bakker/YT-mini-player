@@ -50,7 +50,17 @@
                                 echo "<h2>One of your entries was too long</h2>";
                             }
                         } else {
-                            echo "<h2>Please fill in all entries</h2>";
+                            $error = [];
+                            if(empty($title))
+                                array_push($error, "title");
+                            if(empty($artist))
+                                array_push($error, "artist");
+                            if(empty($videoID))
+                                array_push($error, "videoID");
+
+                            echo "<h2>Please fill in ";
+                            foreach($error as $key => $element) {echo $element; echo ($key === count($error) - 1) ? '.' : ', '; }
+                            echo "</h2>";
                         }
                     }
                 ?>
