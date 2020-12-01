@@ -58,9 +58,7 @@
                             if(empty($videoID))
                                 array_push($error, "videoID");
 
-                            echo "<h2>Please fill in ";
-                            foreach($error as $key => $element) {echo $element; echo ($key === count($error) - 1) ? '.' : ', '; }
-                            echo "</h2>";
+                            echo "<h2>Please fill in " . implode(", ", $error) . ".</h2>";
                         }
                     }
                 ?>
