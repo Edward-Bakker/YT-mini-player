@@ -179,7 +179,7 @@
         }
 
         public static function setSetting($setting, $value) {
-            setcookie($setting, $value, time() + 86400, "/");
+            setcookie($setting, $value, time() + 2592000, "/");
         }
     }
 ?>
