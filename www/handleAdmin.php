@@ -34,9 +34,9 @@
             <div id="div-content-handleAdmin">
                 <?php
                     if($_POST['submit']) {
-                        $title = filter_input(INPUT_POST, 'titleInput', FILTER_SANITIZE_STRING);
-                        $artist = filter_input(INPUT_POST, 'artistInput', FILTER_SANITIZE_STRING);
-                        $videoID = filter_input(INPUT_POST, 'idInput', FILTER_SANITIZE_STRING);
+                        $title = filter_input(INPUT_POST, 'titleInput', FILTER_SANITIZE_SPECIAL_CHARS);
+                        $artist = filter_input(INPUT_POST, 'artistInput', FILTER_SANITIZE_SPECIAL_CHARS);
+                        $videoID = filter_input(INPUT_POST, 'idInput', FILTER_SANITIZE_SPECIAL_CHARS);
 
                         if(!empty($title) && !empty($artist) && !empty($videoID)) {
                             if(!(strlen($title) > 60) && !(strlen($artist) > 60) && !(strlen($videoID) > 15) ) {
